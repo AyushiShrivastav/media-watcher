@@ -1,0 +1,15 @@
+# Render Blueprint: defines the web service so Render can set it up from this repo.
+services:
+  - type: web
+    name: media-watcher
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ACCESS_CODE
+        sync: false
