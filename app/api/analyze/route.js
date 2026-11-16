@@ -31,7 +31,7 @@ export async function POST(request) {
     const analysis = await analyze(name, mentions);
     return Response.json({ name, mentions, analysis, fetchedAt: new Date().toISOString() });
   } catch (e) {
-    // Still return the mentions so the feed works without the AI step.
+    // Still return the mentions so the feed works if the analysis step fails.
     return Response.json({ name, mentions, analysis: null, notice: e.message, fetchedAt: new Date().toISOString() });
   }
 }
